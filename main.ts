@@ -19,9 +19,6 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 `
 }
-scene.onHitWall(SpriteKind.Player, function (sprite) {
-    info.changeLifeBy(-1)
-})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeLifeBy(1)
 })
@@ -61,6 +58,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleRedCrystal, fu
 scene.onHitWall(SpriteKind.Food, function (sprite) {
     AnimalsHeart.destroy()
 })
+let Frog_ray: Sprite = null
 let AnimalsHeart: Sprite = null
 let Antidote: Sprite = null
 let EvilPoison: Sprite = null
@@ -88,8 +86,8 @@ tiles.setTilemap(tiles.createTilemap(
             img`
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . 2 2 2 . . . 
-. . . . . . . . . . . . . . . . . . . . . . . 2 2 . 2 2 2 2 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . 2 2 2 2 
 2 2 2 2 2 2 2 2 . . . . . . . 2 2 2 2 2 2 2 2 2 . . . . . . 
 . . . . . . . 2 2 . . . . . 2 2 . . . . . . . . . . . . . . 
 . . . . . . . . . . . . 2 2 2 . . . . . . . . . . . . . . . 
@@ -102,7 +100,7 @@ tiles.setTilemap(tiles.createTilemap(
             [myTiles.tile0,sprites.dungeon.darkGroundNorthWest0,sprites.dungeon.collectibleRedCrystal,sprites.dungeon.darkGroundNorth],
             TileScale.Sixteen
         ))
-SpaceCadet.setPosition(120, 100)
+SpaceCadet.setPosition(120, 110)
 controller.moveSprite(SpaceCadet, 100, 100)
 scene.cameraFollowSprite(SpaceCadet)
 info.setLife(5)
@@ -128,6 +126,28 @@ game.onUpdateInterval(100, function () {
     EvilPoison.setVelocity(-100, 70)
     EvilPoison.setPosition(200, 100)
 })
+game.onUpdateInterval(500, function () {
+    Frog_ray = sprites.create(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . 7 7 . . . . . 
+. . . . . . . . 7 7 7 7 . . . . 
+. . . . 5 5 5 5 7 2 2 7 . . . . 
+. . . 5 5 . . . 7 2 2 7 7 . . . 
+. . . . . . . 2 7 7 2 7 7 . . . 
+. . . . . . 2 2 . 5 5 7 . . . . 
+. . . . 2 2 2 . 5 5 . . . . . . 
+. . . . . . . . 5 . . . . . . . 
+. . . . . . . 5 5 . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, SpriteKind.Enemy)
+    Frog_ray.setVelocity(-25, 500)
+    Frog_ray.setPosition(400, 30)
+})
 game.onUpdateInterval(5000, function () {
     AnimalsHeart = sprites.create(img`
 . . . . . . . . . . . . . . . . 
@@ -147,6 +167,6 @@ game.onUpdateInterval(5000, function () {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `, SpriteKind.Food)
-    AnimalsHeart.setVelocity(0, 50)
-    AnimalsHeart.setPosition(0, 0)
+    AnimalsHeart.setVelocity(-100, 50)
+    AnimalsHeart.setPosition(100, 100)
 })
