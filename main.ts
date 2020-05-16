@@ -27,7 +27,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     EvilPoison.destroy(effects.spray, 100)
-    Frog_ray.destroy()
+    Frog_ray.destroy(effects.spray, 100)
     info.changeScoreBy(1)
 })
 scene.onHitWall(SpriteKind.Enemy, function (sprite) {
