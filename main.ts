@@ -27,6 +27,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     EvilPoison.destroy(effects.spray, 100)
+    Frog_ray.destroy()
     info.changeScoreBy(1)
 })
 scene.onHitWall(SpriteKind.Enemy, function (sprite) {
@@ -61,9 +62,9 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleRedCrystal, fu
 scene.onHitWall(SpriteKind.Food, function (sprite) {
     AnimalsHeart.destroy()
 })
-let Frog_ray: Sprite = null
 let AnimalsHeart: Sprite = null
 let Antidote: Sprite = null
+let Frog_ray: Sprite = null
 let EvilPoison: Sprite = null
 let SpaceCadet: Sprite = null
 SpaceCadet = sprites.create(img`
