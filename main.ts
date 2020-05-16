@@ -19,6 +19,9 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 `
 }
+scene.onHitWall(SpriteKind.Player, function (sprite) {
+    info.changeLifeBy(-1)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeLifeBy(1)
 })
@@ -88,7 +91,7 @@ tiles.setTilemap(tiles.createTilemap(
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . . . 2 2 2 2 
-2 2 2 2 2 2 2 2 . . . . . . . 2 2 2 2 2 2 2 2 2 . . . . . . 
+2 2 2 2 2 2 2 2 . . . . . . . 2 2 2 2 2 2 2 . . . . . . . . 
 . . . . . . . 2 2 . . . . . 2 2 . . . . . . . . . . . . . . 
 . . . . . . . . . . . . 2 2 2 . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . 2 2 2 2 2 2 
