@@ -154,7 +154,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleRedCrystal, fu
     }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.builtin.forestTiles0, function (sprite, location) {
-    game.over(true)
+    game.over(true, effects.dissolve)
 })
 scene.onHitWall(SpriteKind.Food, function (sprite) {
     AnimalsHeart.destroy()
