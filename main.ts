@@ -20,9 +20,6 @@ namespace myTiles {
 `
 }
 let Level = 0
-scene.onHitWall(SpriteKind.Player, function (sprite) {
-    info.changeLifeBy(-1)
-})
 function start_level () {
     scene.setBackgroundColor(Math.randomRange(3, 7))
     Count = 0
@@ -50,13 +47,19 @@ function start_level () {
     }
     info.startCountdown(10)
 }
+scene.onHitWall(SpriteKind.Player, function (sprite) {
+    info.changeLifeBy(-1)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    Count += 1
+    info.changeScoreBy(1)
+    otherSprite.destroy()
+    otherSprite.startEffect(effects.smiles, 200)
     if (true) {
     	
     } else {
     	
     }
-    info.changeLifeBy(1)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     EvilPoison.destroy(effects.spray, 100)
