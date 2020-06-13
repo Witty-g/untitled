@@ -19,7 +19,6 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 `
 }
-let Level = 0
 function start_level () {
     scene.setBackgroundColor(Math.randomRange(3, 7))
     Count = 0
@@ -45,7 +44,7 @@ function start_level () {
         AnimalsHeart.setPosition(Math.randomRange(20, 140), Math.randomRange(20, 100))
         SpaceCadet.say("Level" + Level, 1000)
     }
-    info.startCountdown(10)
+    info.startCountdown(25)
 }
 scene.onHitWall(SpriteKind.Player, function (sprite) {
     info.changeLifeBy(-1)
@@ -53,12 +52,15 @@ scene.onHitWall(SpriteKind.Player, function (sprite) {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     Count += 1
     info.changeScoreBy(1)
+    info.changeLifeBy(2)
     otherSprite.destroy()
     otherSprite.startEffect(effects.smiles, 200)
-    if (true) {
-    	
+    if (Count > 10 + Level) {
+        Level += 1
+        music.jumpUp.play()
+        start_level()
     } else {
-    	
+        music.baDing.play()
     }
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -93,7 +95,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     info.changeLifeBy(-1)
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleRedCrystal, function (sprite, location) {
-    game.over(true)
+    if (true) {
+        game.over(true, effects.confetti)
+    }
 })
 scene.onHitWall(SpriteKind.Food, function (sprite) {
     AnimalsHeart.destroy()
@@ -103,6 +107,7 @@ let Frog_ray: Sprite = null
 let EvilPoison: Sprite = null
 let AnimalsHeart: Sprite = null
 let Count = 0
+let Level = 0
 let SpaceCadet: Sprite = null
 SpaceCadet = sprites.create(img`
 . . . . . . . . . . . . . . . . 
@@ -129,9 +134,9 @@ tiles.setTilemap(tiles.createTilemap(
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . . . 2 2 2 2 
-2 2 2 2 2 2 2 2 . . . . . . . 2 2 2 2 2 2 2 . . . . . . . . 
-. . . . . . . 2 2 . . . . . 2 2 . . . . . . . . . . . . . . 
-. . . . . . . . . . . . 2 2 2 . . . . . . . . . . . . . . . 
+2 2 2 2 2 . . . . . . . . . . 2 2 2 2 2 2 2 . . . . . . . . 
+. . . . . . . . 2 2 2 . . . 2 2 . . . . . . . . . . . . . . 
+. . . . . . . . . . 2 2 2 2 2 . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . 2 2 2 2 2 2 
 . . . . . . . . . . . . . . . . . . . . . . . . 2 . . . . . 
 2 2 2 2 2 2 2 . . . . . . . . . . . . . . . . 2 2 . . . . . 
@@ -145,6 +150,9 @@ SpaceCadet.setPosition(120, 110)
 controller.moveSprite(SpaceCadet, 100, 100)
 scene.cameraFollowSprite(SpaceCadet)
 info.setLife(5)
+game.splash("Mission", "Retrieve the stolen gems to our people")
+Level = 1
+start_level()
 game.onUpdateInterval(100, function () {
     EvilPoison = sprites.create(img`
 . . . . . . . . . . . . . . . . 
