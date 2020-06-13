@@ -44,7 +44,7 @@ function start_level () {
         AnimalsHeart.setPosition(Math.randomRange(20, 140), Math.randomRange(20, 100))
         SpaceCadet.say("Level" + Level, 1000)
     }
-    info.startCountdown(25)
+    info.startCountdown(35)
 }
 scene.onHitWall(SpriteKind.Player, function (sprite) {
     info.changeLifeBy(-1)
