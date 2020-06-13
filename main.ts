@@ -68,9 +68,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
 . . . . . . . . . . . . . . . . . . . . . . . . . . 2 2 2 2 
 . . . . . . . . . . 2 2 2 2 2 . . . . . . . . . . . . . . . 
 . . . . . . . . . . 2 . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . 2 2 . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . 2 . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 2 2 2 . . . . . . . . . . . 
-. . . . 2 2 2 2 2 2 . . . . . . 2 . 2 2 . . . . . . . . . . 
+. . . . 2 2 2 2 . . . . . . . . 2 . 2 2 . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . 2 . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . 2 . . . . . . . . . . 
 2 2 2 2 2 2 2 2 2 . . 2 . . . . . . . 2 . . . . . . . . . . 
@@ -211,26 +211,26 @@ info.setLife(5)
 game.splash("Mission:", "Retrieve the stolen gems to our people")
 Level = 1
 start_level()
-game.onUpdateInterval(500, function () {
+game.onUpdateInterval(200, function () {
     EvilPoison = sprites.create(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
-. . . . . . 7 7 7 7 7 7 . . . . 
-. . . . 7 7 7 7 7 7 7 7 7 . . . 
-. . . 7 7 7 7 7 7 7 7 7 7 7 . . 
-. . . 7 7 7 7 7 7 7 7 7 7 7 . . 
-. . . 7 7 2 7 7 7 7 2 7 7 7 . . 
-. . . . 7 7 7 7 7 7 7 7 7 7 . . 
-. . . . 7 7 7 7 2 7 7 7 7 7 . . 
-. . . . 7 7 7 2 2 2 7 7 7 7 . . 
-. . . . 7 7 7 7 7 2 2 2 7 . . . 
-. . . . . 7 7 7 7 7 7 7 . . . . 
-. . . . . . 7 7 7 . . . . . . . 
+. . . . . . f f f f f f . . . . 
+. . . . f f f f f f f f f . . . 
+. . . f f f f f f f f f f f . . 
+. . . f f f f f f f f f f f . . 
+. . . f f 2 f f f f 2 f f f . . 
+. . . . f f f f f f f f f f . . 
+. . . . f f f f 2 f f f f f . . 
+. . . . f f f 2 2 2 f f f f . . 
+. . . . f f f f f 2 2 2 f . . . 
+. . . . . f f f f f f f . . . . 
+. . . . . . f f f . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `, SpriteKind.Enemy)
-    EvilPoison.setVelocity(-100, 60)
+    EvilPoison.setVelocity(-100, 55)
     EvilPoison.setPosition(200, 100)
 })
 game.onUpdateInterval(500, function () {
