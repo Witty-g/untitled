@@ -154,10 +154,8 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleRedCrystal, fu
     }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.builtin.forestTiles0, function (sprite, location) {
-    if (true) {
-        game.over(true, effects.dissolve)
-        music.powerUp.play()
-    }
+    game.over(true, effects.dissolve)
+    music.powerUp.play()
 })
 scene.onHitWall(SpriteKind.Food, function (sprite) {
     AnimalsHeart.destroy()
@@ -232,7 +230,7 @@ game.onUpdateInterval(500, function () {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `, SpriteKind.Enemy)
-    EvilPoison.setVelocity(-100, 70)
+    EvilPoison.setVelocity(-100, 60)
     EvilPoison.setPosition(200, 100)
 })
 game.onUpdateInterval(500, function () {
