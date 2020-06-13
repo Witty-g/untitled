@@ -151,6 +151,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleRedCrystal, fu
             [myTiles.tile0,sprites.castle.tilePath7,sprites.castle.tilePath1,sprites.dungeon.collectibleRedCrystal,sprites.castle.tileGrass2,sprites.builtin.forestTiles0],
             TileScale.Sixteen
         ))
+        game.splash("Frog Ray: You have done well SpaceCadet: ", "But it takes more than that to beat Me!")
     }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.builtin.forestTiles0, function (sprite, location) {
