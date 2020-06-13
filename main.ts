@@ -207,7 +207,7 @@ SpaceCadet.setPosition(120, 110)
 controller.moveSprite(SpaceCadet, 100, 100)
 scene.cameraFollowSprite(SpaceCadet)
 info.setLife(5)
-game.splash("Mission", "Retrieve the stolen gems to our people")
+game.splash("Mission:", "Retrieve the stolen gems to our people")
 Level = 1
 start_level()
 game.onUpdateInterval(500, function () {
