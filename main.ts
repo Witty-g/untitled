@@ -19,16 +19,37 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 `
 }
-function start_level_ () {
-    scene.setBackgroundColor(Math.randomRange(3, 7))
-    Count = 0
-    for (let index = 0; index <= 10 + 0; index++) {
-    	
-    }
-}
+let Level = 0
 scene.onHitWall(SpriteKind.Player, function (sprite) {
     info.changeLifeBy(-1)
 })
+function start_level () {
+    scene.setBackgroundColor(Math.randomRange(3, 7))
+    Count = 0
+    for (let index = 0; index <= 10 + Level; index++) {
+        AnimalsHeart = sprites.create(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . 2 . . . . . 
+. . . . . 2 2 2 . 2 8 2 2 . . . 
+. . . . 2 8 8 2 . 2 8 8 2 . . . 
+. . . 2 2 8 8 8 2 8 8 8 2 . . . 
+. . . 2 8 8 5 8 2 8 8 8 2 . . . 
+. . . 2 2 8 8 8 8 8 8 8 2 . . . 
+. . . . 2 8 8 8 8 8 8 8 2 . . . 
+. . . . 2 8 5 8 8 8 5 8 2 . . . 
+. . . . . 2 8 8 8 8 8 2 2 . . . 
+. . . . . 2 8 8 8 8 8 2 . . . . 
+. . . . . . 2 8 8 8 2 2 . . . . 
+. . . . . . 2 2 2 2 . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, SpriteKind.Food)
+        AnimalsHeart.setPosition(Math.randomRange(20, 140), Math.randomRange(20, 100))
+        SpaceCadet.say("Level" + Level, 1000)
+    }
+    info.startCountdown(10)
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     if (true) {
     	
@@ -74,10 +95,10 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleRedCrystal, fu
 scene.onHitWall(SpriteKind.Food, function (sprite) {
     AnimalsHeart.destroy()
 })
-let AnimalsHeart: Sprite = null
 let Antidote: Sprite = null
 let Frog_ray: Sprite = null
 let EvilPoison: Sprite = null
+let AnimalsHeart: Sprite = null
 let Count = 0
 let SpaceCadet: Sprite = null
 SpaceCadet = sprites.create(img`
@@ -164,26 +185,4 @@ game.onUpdateInterval(500, function () {
 `, SpriteKind.Enemy)
     Frog_ray.setVelocity(-25, 500)
     Frog_ray.setPosition(400, 30)
-})
-game.onUpdateInterval(5000, function () {
-    AnimalsHeart = sprites.create(img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . 2 . . . . . 
-. . . . . 2 2 2 . 2 8 2 2 . . . 
-. . . . 2 8 8 2 . 2 8 8 2 . . . 
-. . . 2 2 8 8 8 2 8 8 8 2 . . . 
-. . . 2 8 8 5 8 2 8 8 8 2 . . . 
-. . . 2 2 8 8 8 8 8 8 8 2 . . . 
-. . . . 2 8 8 8 8 8 8 8 2 . . . 
-. . . . 2 8 5 8 8 8 5 8 2 . . . 
-. . . . . 2 8 8 8 8 8 2 2 . . . 
-. . . . . 2 8 8 8 8 8 2 . . . . 
-. . . . . . 2 8 8 8 2 2 . . . . 
-. . . . . . 2 2 2 2 . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`, SpriteKind.Food)
-    AnimalsHeart.setVelocity(-100, 50)
-    AnimalsHeart.setPosition(100, 100)
 })
