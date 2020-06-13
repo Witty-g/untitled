@@ -19,10 +19,22 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 `
 }
+function start_level_ () {
+    scene.setBackgroundColor(Math.randomRange(3, 7))
+    Count = 0
+    for (let index = 0; index <= 10 + 0; index++) {
+    	
+    }
+}
 scene.onHitWall(SpriteKind.Player, function (sprite) {
     info.changeLifeBy(-1)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    if (true) {
+    	
+    } else {
+    	
+    }
     info.changeLifeBy(1)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -66,6 +78,7 @@ let AnimalsHeart: Sprite = null
 let Antidote: Sprite = null
 let Frog_ray: Sprite = null
 let EvilPoison: Sprite = null
+let Count = 0
 let SpaceCadet: Sprite = null
 SpaceCadet = sprites.create(img`
 . . . . . . . . . . . . . . . . 
