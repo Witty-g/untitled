@@ -86,7 +86,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
             [myTiles.tile0,sprites.castle.tilePath4,sprites.castle.tilePath1,sprites.builtin.forestTiles0],
             TileScale.Sixteen
         ))
-        game.splash("You have done well SpaceCadet", "Now test your flying skills to win ")
+        game.splash("Frog ray: You have done well SpaceCadet:", "But it takes more than that to beat ME!")
     } else {
         music.baDing.play()
     }
